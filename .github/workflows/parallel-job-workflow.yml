@@ -33,11 +33,17 @@ jobs:
       with:
         node-version: 20
 
-    - name: Install dependencies
-      run: npm CI
+    - name: Print a message for main branch
+      if: github.ref == 'refs/heads/main'
+      run: echo "This is the main branch."
+
+    - name: Print a message for pull requests
+      if: github.event_name == 'pull_request'
+      run: echo "This is a pull request."
 
     - name: Run tests
       run: npm test
 
-    - name: Print a message
-      run: echo "Hello, world!"
+    - name: Debug message
+      if: env.DEBUG == 'true'
+      run: echo "Debugging is enabled."
