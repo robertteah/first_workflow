@@ -38,11 +38,12 @@ jobs:
       run: echo "This is the main branch."
 
     - name: Print a message for pull requests
-      if: github.event_name == 'pull_request'
+      if: github.ref == 'pull_request'
       run: echo "This is a pull request."
 
     - name: Run tests
       run: npm test
+
 
     - name: Debug message
       if: env.DEBUG == 'true'
