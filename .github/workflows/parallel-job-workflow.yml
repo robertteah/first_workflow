@@ -45,7 +45,7 @@ jobs:
         run: npm test
 
       - name: Debug message
-        if: env.DEBUG == 'true'
+        if: github.event.inputs.debug == 'true'
         run: echo "Debugging is enabled."
 
   build-and-test-2:
